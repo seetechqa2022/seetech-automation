@@ -65,20 +65,20 @@ public class ActionEngine extends BaseTest {
 	}
 	
 	public static String getScreenshot(String screenshotName) throws Throwable {
+		String screenshotLocation = System.getProperty("user.dir");
 		try {
-			
 			String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 			TakesScreenshot ts =(TakesScreenshot)driver;
 			File source = ts.getScreenshotAs(OutputType.FILE);
-			reportsDestination = System.getProperty("user.dir") +File.separator+ "FailedScreenShots"+File.separator + screenshotName+ dateName + ".png";
-			File finalDestination = new File(reportsDestination);
+			screenshotLocation= screenshotLocation+File.separator+ "FailedScreenShots"+File.separator + screenshotName+ dateName + ".png";
+			File finalDestination = new File(screenshotLocation);
 			FileUtils.copyFile(source, finalDestination);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return reportsDestination;
+		return screenshotLocation;
 	}
 	
 }

@@ -71,7 +71,7 @@ public class BaseTest {
 	 */
 	@AfterSuite
 	public void SuiteClose() {
-		File file = new File(reportsDestination);
+		File file = new File(reportFilePath);
 		Desktop desktop = Desktop.getDesktop();
 		try {
 			desktop.browse(file.toURI());
