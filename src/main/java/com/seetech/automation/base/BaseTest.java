@@ -1,6 +1,8 @@
 package com.seetech.automation.base;
 
+import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -10,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
@@ -26,6 +29,7 @@ public class BaseTest {
 	public static ExtentReports extentReports;
 	public static ExtentTest extentTest;
 	public static String startDate;
+	public static String reportsDestination;
 	
 	@BeforeSuite
 	public void beforeAll(ITestContext itc) {
@@ -57,6 +61,22 @@ public class BaseTest {
 	public void rearDown() {
 		driver.close();
 		extentReports.flush();
+	}
+	
+	/**
+	 * This method open the Extent report generated in a default browser after suite
+	 * execution completed.
+	 * 
+	 */
+	@AfterSuite
+	public void SuiteClose() {
+		File file = new File(reportsDestination);
+		Desktop desktop = Desktop.getDesktop();
+		try {
+			desktop.browse(file.toURI());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
