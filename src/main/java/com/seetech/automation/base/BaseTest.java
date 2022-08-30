@@ -30,14 +30,15 @@ public class BaseTest {
 	public static ExtentTest extentTest;
 	public static String startDate;
 	public static String reportsDestination;
+	public String reportFilePath;
 	
 	@BeforeSuite
 	public void beforeAll(ITestContext itc) {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("MMM_dd_yyyy_z_HH_mm_ss");
 		startDate = sdf.format(new Date());
-		String path = System.getProperty("user.dir")+File.separator+"Reports"+File.separator+"reports_"+startDate+".html";
-		extentReports = new ExtentReports(path);
+		reportFilePath = System.getProperty("user.dir")+File.separator+"Reports"+File.separator+"reports_"+startDate+".html";
+		extentReports = new ExtentReports(reportFilePath);
 	}
 
 	@Parameters({ "browser" })
