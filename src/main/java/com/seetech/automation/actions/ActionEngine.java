@@ -71,7 +71,7 @@ public class ActionEngine extends BaseTest {
 			String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 			TakesScreenshot ts =(TakesScreenshot)driver;
 			File source = ts.getScreenshotAs(OutputType.FILE);
-			destination = destination + "/FailedScreenShots" + screenshotName+ dateName + ".png";
+			destination = destination +File.separator+ "FailedScreenShots"+File.separator + screenshotName+ dateName + ".png";
 			File finalDestination = new File(destination);
 			FileUtils.copyFile(source, finalDestination);
 			
