@@ -46,7 +46,7 @@ public class ConfigManager {
 
 	public static void main(String[] args){
 
-		System.out.println( getProperty("url"));
+		System.out.println( getProperty("password"));
 
 	}
 
