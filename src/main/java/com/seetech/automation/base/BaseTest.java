@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -51,6 +52,9 @@ public class BaseTest {
 		} else if("ie".equals(browser)) {
 			WebDriverManager.iedriver().setup();
 			driver = new InternetExplorerDriver();
+		} else if("firefox".equals(browser)) {
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
 		}
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
