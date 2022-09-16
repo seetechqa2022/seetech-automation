@@ -5,7 +5,7 @@
   <test name="Nopackage" >
    <parameter name="browser" value="chrome"></parameter>
     <classes>
-       <class name="com.seetech.automation.tests.SeeTechTest" />
+       <class name="com.seetech.automation.tests.SeeTechTest2" />
     </classes>
   </test>
  

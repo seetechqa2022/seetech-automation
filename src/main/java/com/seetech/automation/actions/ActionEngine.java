@@ -197,27 +197,6 @@ public class ActionEngine extends BaseTest {
 		  }
 	  
 	  
-	  public boolean acceptAlert() throws Throwable {
-		    boolean isAlertAccepted = false;
-		    try {
-		      WebDriverWait wait = new WebDriverWait(driver, 5);
-		      Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-		      alert.accept();
-		      isAlertAccepted = true;
-		    } catch (NoAlertPresentException ex) {
-		      ex.printStackTrace();
-		    } finally {
-		      if (isAlertAccepted) {
-		    	  extentTest.log(LogStatus.PASS, "Alet accepted");
-		      } else {
-		    	  extentTest.log(LogStatus.FAIL, "Failed to accept alert"
-		            + extentTest.addScreenCapture(getScreenshot("Failed to accept alert!")));
-		      }
-		    }
-		    return isAlertAccepted;
-		  }
-
-	  
 	  public void waitForElementToBeClickable(By locator, int withTime) throws Throwable {
 		    try {
 		      WebDriverWait wait = new WebDriverWait(driver, withTime);
@@ -252,40 +231,63 @@ public class ActionEngine extends BaseTest {
 		    }
 		  }
 	  
-	  public static void sendKeyBoardData(String strText) throws Throwable {
+	  public boolean acceptAlert() throws Throwable {
+		    boolean isAlertAccepted = false;
 		    try {
-		      StringSelection stringSelection = new StringSelection(strText);
-		      Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-		      Robot robot = new Robot();
-		      robot.setAutoDelay(1000);
-		      robot.keyPress(KeyEvent.VK_TAB);
-		      robot.keyRelease(KeyEvent.VK_TAB);
-		      Thread.sleep(1000);
-		      robot.keyPress(KeyEvent.VK_CONTROL);
-		      robot.keyPress(KeyEvent.VK_V);
-		      robot.keyRelease(KeyEvent.VK_CONTROL);
-		      robot.keyRelease(KeyEvent.VK_V);
-		      robot.keyPress(KeyEvent.VK_ENTER);
-		    } catch (AWTException e) {
-		      e.printStackTrace();
+		      WebDriverWait wait = new WebDriverWait(driver, 5);
+		      Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+		      alert.accept();
+		      isAlertAccepted = true;
+		    } catch (NoAlertPresentException ex) {
+		      ex.printStackTrace();
+		    } finally {
+		      if (isAlertAccepted) {
+		    	  extentTest.log(LogStatus.PASS, "Alet accepted");
+		      } else {
+		    	  extentTest.log(LogStatus.FAIL, "Failed to accept alert"
+		            + extentTest.addScreenCapture(getScreenshot("Failed to accept alert!")));
+		      }
 		    }
+		    return isAlertAccepted;
 		  }
-		  
-		  public void fileUpload (String path) throws Throwable{
-		    StringSelection strSelection = new StringSelection(path);
-		    Toolkit.getDefaultToolkit().getSystemClipboard().setContents(strSelection, null);
-
-		    Robot robot = new Robot();
-
-		    robot.delay(300);
-		    robot.keyPress(KeyEvent.VK_ENTER);
-		    robot.keyRelease(KeyEvent.VK_ENTER);
-		    robot.keyPress(KeyEvent.VK_CONTROL);
-		    robot.keyPress(KeyEvent.VK_V);
-		    robot.keyRelease(KeyEvent.VK_V);
-		    robot.keyRelease(KeyEvent.VK_CONTROL);
-		    robot.keyPress(KeyEvent.VK_ENTER);
-		    robot.delay(200);
-		    robot.keyRelease(KeyEvent.VK_ENTER);
-		}
+	  
+	  public boolean dismissAlert() throws Throwable {
+		    boolean isAlertAccepted = false;
+		    try {
+		      WebDriverWait wait = new WebDriverWait(driver, 5);
+		      Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+		      alert.dismiss();
+		      isAlertAccepted = true;
+		    } catch (NoAlertPresentException ex) {
+		      ex.printStackTrace();
+		    } finally {
+		      if (isAlertAccepted) {
+		    	  extentTest.log(LogStatus.PASS, "Alet dismissed");
+		      } else {
+		    	  extentTest.log(LogStatus.FAIL, "Failed to dismiss alert"
+		            + extentTest.addScreenCapture(getScreenshot("Failed to dismiss alert!")));
+		      }
+		    }
+		    return isAlertAccepted;
+		  }
+	  
+	  public boolean sendDataToAlert(String data) throws Throwable {
+		    boolean isAlertAccepted = false;
+		    try {
+		      WebDriverWait wait = new WebDriverWait(driver, 3);
+		      Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+		      alert.sendKeys(data);
+		      isAlertAccepted = true;
+		    } catch (NoAlertPresentException ex) {
+		      ex.printStackTrace();
+		    } finally {
+		      if (isAlertAccepted) {
+		    	  extentTest.log(LogStatus.PASS, "Alet handled with d input data");
+		      } else {
+		    	  extentTest.log(LogStatus.FAIL, "Failed to alert with data"
+		            + extentTest.addScreenCapture(getScreenshot("Failed to alert with data!")));
+		      }
+		    }
+		    return isAlertAccepted;
+		  }
 }
