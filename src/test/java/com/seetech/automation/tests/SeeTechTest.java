@@ -48,7 +48,7 @@ public class SeeTechTest extends ActionEngine{
 		Thread.sleep(10000);
 	}
 	
-	//@Test
+	@Test
 	public void selectMenu() throws Throwable {
 		extentTest = extentReports.startTest("SriptName", "TestCase");
 		By selLocator = By.cssSelector("select[id='oldSelectMenu']");
