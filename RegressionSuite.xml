@@ -2,10 +2,10 @@
   
 <suite name="Suite1" verbose="1" >
 
-  <test name="Nopackage" >
+  <test name="Nopackage" parallel="methods" thread-count="2">
    <parameter name="browser" value="chrome"></parameter>
     <classes>
-       <class name="com.seetech.automation.tests.SeeTechTest" />
+       <class name="com.seetech.automation.tests.ParallelExecution" />
     </classes>
   </test>
  

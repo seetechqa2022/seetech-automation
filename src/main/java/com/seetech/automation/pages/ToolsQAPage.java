@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import com.seetech.automation.actions.ActionEngine;
 
 public class ToolsQAPage extends ActionEngine{
-	private By elements = By.xpath("//h5[text()='Elements1']");
+	private By elements = By.xpath("//h5[text()='Elements']");
 	private By forms = By.xpath("//h5[text()='Forms']");
 	
 	public void clickElementsCard() throws Throwable {
