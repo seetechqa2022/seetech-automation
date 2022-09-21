@@ -31,6 +31,11 @@ public class PriorityTestCases extends ActionEngine {
 		System.out.println("Daniel");
 	}
 	
+	@Test(priority = 6)
+	public void teka() {
+		System.out.println("Teka");
+	}
+
 	@Test(priority = 5)
 	public void narasimha() {
 		System.out.println("Narasimha");
