@@ -45,6 +45,6 @@ public class PriorityTestCases extends ActionEngine {
 
 	@Test(priority = 5)
 	public void narasimha() {
-		System.out.println("Narasimha India");
+		System.out.println("Narasimha");
 	}
 }
