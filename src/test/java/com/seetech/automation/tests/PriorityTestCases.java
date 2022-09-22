@@ -35,6 +35,7 @@ public class PriorityTestCases extends ActionEngine {
 	@Test(priority = 7)
 	public void tinsae2() {
 		System.out.println("Tinsae");
+	}
 
 	@Test(priority = 6)
 	public void teka() {
