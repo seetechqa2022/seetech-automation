@@ -5,7 +5,6 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.seetech.automation.actions.ActionEngine;
@@ -13,7 +12,7 @@ import com.seetech.automation.actions.ActionEngine;
 public class WindowsHandling extends ActionEngine{
 	
 	
-	//@Test
+	@Test
 	public void windows() {
 		
 		driver.get("https://demoqa.com/browser-windows");
@@ -38,12 +37,6 @@ public class WindowsHandling extends ActionEngine{
 			
 		}
 		
-	}
-	
-	@Parameters({ "browser" })
-	@Test
-	public void test2(String s) {
-		System.out.println(s);
 	}
 
 }
