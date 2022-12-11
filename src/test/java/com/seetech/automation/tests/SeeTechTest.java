@@ -14,7 +14,7 @@ public class SeeTechTest extends ActionEngine{
 	ElementsPage elementsPage = new ElementsPage();
 	TextBoxPage textBoxPage = new TextBoxPage();
 	
-	//@Test
+	@Test
 	public void test() throws Throwable {
 		extentTest = extentReports.startTest("SriptName", "TestCase");
 		toolsQA.clickElementsCard();

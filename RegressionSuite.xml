@@ -5,7 +5,7 @@
   <test name="Nopackage" parallel="methods" thread-count="2">
    <parameter name="browser" value="chrome"></parameter>
     <classes>
-       <class name="com.seetech.automation.tests.ParallelExecution" />
+       <class name="com.seetech.automation.tests.WindowsHandling" />
     </classes>
   </test>
  
