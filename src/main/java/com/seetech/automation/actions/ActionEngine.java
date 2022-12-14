@@ -210,7 +210,7 @@ public class ActionEngine extends BaseTest {
 		      int pollingEvery) throws Throwable {
 		    boolean flag = false;
 		    try {
-		      Wait<WebDriver> wait = new FluentWait<>(driver)
+		      Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
 		          .withTimeout(Duration.ofSeconds(withTimeout))
 		          .pollingEvery(Duration.ofSeconds(pollingEvery)).ignoring(WebDriverException.class);
 
@@ -290,4 +290,34 @@ public class ActionEngine extends BaseTest {
 		    }
 		    return isAlertAccepted;
 		  }
+	  
+	  /**
+	   * This method is used to hit the KEY from the keyboard
+	   * 
+	   * @param locator It is a locator for web element in the page. Ex. locator can be found with Id, xpath, css etc.
+	   * @param KeyName a name of the key
+	   * @param locatorName locator name
+	   * @return a boolean value
+	   * @throws Throwable It will throw exception if any abnormal situation occur while executing the method code.
+	   */
+	  public boolean hitKeyBoardEnterKey(By locator, String KeyName, String locatorName)
+	      throws Throwable {
+	    boolean isKeBoardEnterKeyPressed = false;
+	    try {
+	      waitForElementToBeClickable(locator, 30);
+	      getWebElement(locator).sendKeys(Keys.ENTER);
+	      isKeBoardEnterKeyPressed = true;
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	      throw e;
+	    } finally {
+	      if (isKeBoardEnterKeyPressed) {
+	    	  extentTest.log(LogStatus.PASS, "Pressed '" + KeyName + "'");
+	      } else {
+	    	  extentTest.log(LogStatus.FAIL, "Pressed'" + KeyName + "'"
+	            + extentTest.addScreenCapture(getScreenshot(locatorName)));
+	      }
+	    }
+	    return isKeBoardEnterKeyPressed;
+	  }
 }
