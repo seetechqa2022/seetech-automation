@@ -12,7 +12,7 @@ import org.testng.Assert;
 public class ConfigManager {
 	private static Map<String, Properties> configs = new HashMap<String, Properties>();
 	public static String configFileName = System.getProperty("user.dir")+File.separator+"ConfigData"+File.separator+"config.properties";
-
+//
 	private static void loadConfig(String name)
 	{
 		Properties prop = new Properties();
@@ -47,7 +47,7 @@ public class ConfigManager {
 	public static void main(String[] args){
 
 		System.out.println( getProperty("url"));
-
+//
 	}
 
 }
